@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oops!</title>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    text-align: center;
+    padding: 50px;
+}
+.container {
+    background: #fff;
+    display: inline-block;
+    padding: 30px 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+h1 {
+    font-size: 2.5rem;
+    color: #FF4500;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+a {
+    text-decoration: none;
+    background: #1E90FF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+a:hover {
+    background: #00BFFF;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Oops!</h1>
+    <p>{{ message }}</p>
+    <a href="{% url 'student_login' %}">Go to Login</a>
+</div>
+</body>
+</html>

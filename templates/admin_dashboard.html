@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+
+<style>
+/* Reset & Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff; /* White body */
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    background: linear-gradient(135deg, #1E90FF, #00BFFF); /* Blue gradient */
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 20px;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 0 0 15px 15px;
+}
+
+.navbar a {
+    color: #fff;
+    margin: 5px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background: #ffffff;
+    color: #1E90FF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Container */
+.container {
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Card */
+.card {
+    width: 220px;
+    background: #f0f8ff; /* Light blue */
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    cursor: default;
+    animation: fadeInUp 1s ease forwards;
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+.card:hover {
+    background: linear-gradient(135deg, #1E90FF, #00BFFF); /* Blue gradient on hover */
+    color: #fff;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.card h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media(max-width:600px){
+    .card {
+        width: 90%;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <a href="{% url 'admin_dashboard' %}">Dashboard</a>
+    <a href="/rooms/add-room/">Add Room</a>
+    <a href="/rooms/view-rooms/">View Rooms</a>
+    <a href="/students/view-students/">Students</a>
+    <a href="/rooms/assign-room/">Assign Room</a>
+    <a href="/fees/add-fee/">Add Fees</a>
+    <a href="/fees/view-fees/">View Fees</a>
+    <a href="/complaints/view/">View Complaints</a>
+
+    <a href="{% url 'add_notice' %}">Add Notice</a>
+    <a href="{% url 'view_notice' %}">Notice</a>
+
+    <a href="/admin-logout/">Logout</a>
+</div>
+
+<!-- Dashboard Cards -->
+<div class="container">
+    <div class="card">
+        <h2>{{students}}</h2>
+        <p>Total Students</p>
+    </div>
+
+    <div class="card">
+        <h2>{{rooms}}</h2>
+        <p>Total Rooms</p>
+    </div>
+
+    <div class="card">
+        <h2>{{fees}}</h2>
+        <p>Pending Fees</p>
+    </div>
+
+    <div class="card">
+        <h2>{{complaints}}</h2>
+        <p>Complaints</p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Add Student</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+}
+
+.container{
+width:500px;
+margin:30px auto;
+background:white;
+padding:20px;
+box-shadow:0 0 10px gray;
+}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+}
+
+button{
+padding:10px;
+background:black;
+color:white;
+border:none;
+margin-top:15px;
+width:100%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Add Student</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<label>Name</label>
+<input type="text" name="name">
+
+<label>Email</label>
+<input type="email" name="email">
+
+<label>Phone</label>
+<input type="text" name="phone">
+
+<label>Address</label>
+<textarea name="address"></textarea>
+
+<label>College</label>
+<input type="text" name="college">
+
+<label>Course</label>
+<input type="text" name="course">
+
+<label>Joining Date</label>
+<input type="date" name="joining_date">
+
+<label>Select Room</label>
+<select name="room">
+<option value="">Select Room</option>
+
+{% for room in rooms %}
+<option value="{{room.id}}">
+{{room.room_number}} - Available: {{room.available_beds}}
+</option>
+{% endfor %}
+
+</select>
+
+<label>Student Photo</label>
+<input type="file" name="photo">
+
+<label>ID Proof</label>
+<input type="file" name="id_proof">
+
+<button type="submit">Add Student</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

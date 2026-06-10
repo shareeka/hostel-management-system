@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Room</title>
+
+<style>
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f4f8;
+    margin:0;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(135deg,#1E90FF,#00BFFF);
+    padding:15px;
+    text-align:center;
+}
+
+.navbar a {
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+}
+
+.container {
+    width:80%;
+    margin:30px auto;
+}
+
+.card {
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+h2 {
+    color:#1E90FF;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="navbar">
+    <a href="{% url 'student_dashboard' %}">Dashboard</a>
+    <a href="{% url 'student_room' %}">My Room</a>
+    <a href="/fees/student-fees/">My Fees</a>
+    <a href="/complaints/add/">Complaint</a>
+    <a href="{% url 'student_notices' %}">Notice</a>
+    <a href="{% url 'student_logout' %}">Logout</a>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>My Room Details</h2>
+
+{% if student.room %}
+
+<p><strong>Room Number:</strong> {{student.room.room_number}}</p>
+<p><strong>Room Type:</strong> {{student.room.room_type}}</p>
+<p><strong>Total Beds:</strong> {{student.room.total_beds}}</p>
+<p><strong>Available Beds:</strong> {{student.room.available_beds}}</p>
+
+{% else %}
+
+<p>No room allocated yet</p>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>

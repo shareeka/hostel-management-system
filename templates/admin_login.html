@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+
+<style>
+/* Reset & Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1E90FF, #00BFFF);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    padding: 15px 0;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.navbar a {
+    color: #fff;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar a:hover {
+    color: #00BFFF;
+}
+
+.navbar a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #00BFFF;
+    transition: width 0.3s;
+    width: 0;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* Login Box */
+.login-box {
+    width: 380px;
+    margin: 80px auto;
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    animation: fadeIn 1s ease forwards;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+/* Header */
+h2 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    animation: slideDown 1s ease forwards;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    box-shadow: 0 0 10px #00BFFF;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 50px;
+    background: #fff;
+    color: #1E90FF;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    color: #fff;
+    background: #00BFFF;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transform: translateY(-3px);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.15);
+    transform: skewX(-20deg);
+    transition: all 0.5s ease;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media(max-width:500px){
+    .login-box {
+        width: 90%;
+        padding: 30px;
+    }
+    .navbar a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/students/register/">Student Register</a>
+    <a href="/students/login/">Student Login</a>
+    <!-- <a href="/warden-login/">Warden Login</a> -->
+</div>
+
+<!-- Login Box -->
+<div class="login-box">
+    <h2>Admin Login</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+</body>
+</html>
